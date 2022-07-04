@@ -73,7 +73,6 @@ class PictureOfTheDayFragment : Fragment() {
         request()
         clickButtonStyle()
         BSB ()
-       // FAB()
         clickWiki()
         actionBar()
         switchNightMode()
@@ -135,30 +134,6 @@ class PictureOfTheDayFragment : Fragment() {
 
     }
 
-    /*private fun FAB(){
-        binding.fab.setOnClickListener {
-            isMain = !isMain
-            if (!isMain) {
-                binding.bottomAppBar.navigationIcon = null
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), drawable.ic_back_fab))
-                binding.bottomAppBar.replaceMenu(menu.menu_bottom_bar_other)
-            } else {
-                binding.bottomAppBar.navigationIcon = ContextCompat.getDrawable(requireContext(),
-                    drawable.ic_hamburger_menu_bottom_bar)
-
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        drawable.ic_plus_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(menu.menu_bottom_bar)
-            }
-
-        }
-    }*/
 
     private fun BSB (){
         val params = (binding.lifeHack.bottomSheetContainer.layoutParams as CoordinatorLayout.LayoutParams)
