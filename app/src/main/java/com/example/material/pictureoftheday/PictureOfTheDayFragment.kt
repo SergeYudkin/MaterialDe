@@ -6,22 +6,31 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.material.MainActivity
 import com.example.material.R
 import com.example.material.databinding.FragmentPictureOfTheDayBinding
+
 import com.example.material.settings.SettingsFragment
 import com.example.material.utils.Parameters
 import com.example.material.viewmodel.AppState
 import com.example.material.viewmodel.PictureOfTheDayViewModel
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.switchmaterial.SwitchMaterial
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class PictureOfTheDayFragment : Fragment() {
 
+
+    private var isMain = true
 
     private var _binding : FragmentPictureOfTheDayBinding? = null
     private val binding : FragmentPictureOfTheDayBinding
@@ -64,13 +73,44 @@ class PictureOfTheDayFragment : Fragment() {
         request()
         clickButtonStyle()
         BSB ()
+       // FAB()
         clickWiki()
         actionBar()
+        switchNightMode()
+        clickChip()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_bar,menu)
+    }
+    private fun switchNightMode(){
+        requireActivity().findViewById<SwitchMaterial>(R.id.switch_night_mode).setOnCheckedChangeListener{ buttonView, isChecked->
+            if (isChecked){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            }else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+    }
+
+    private fun takeDate(count: Int): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, count)
+        val format1 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        format1.timeZone = TimeZone.getTimeZone("EST")
+        return format1.format(currentDate.time)
+    }
+
+    private fun clickChip(){
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yesterday ->{viewModel.sendServerRequest(takeDate(-1))}
+                R.id.day_before_yesterday->{viewModel.sendServerRequest(takeDate(-2))}
+                R.id.today ->{viewModel.sendServerRequest()}
+
+            }
+        }
     }
 
     private fun clickButtonStyle() {
@@ -95,6 +135,31 @@ class PictureOfTheDayFragment : Fragment() {
 
     }
 
+    /*private fun FAB(){
+        binding.fab.setOnClickListener {
+            isMain = !isMain
+            if (!isMain) {
+                binding.bottomAppBar.navigationIcon = null
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                binding.fab.setImageDrawable(ContextCompat.getDrawable(requireContext(), drawable.ic_back_fab))
+                binding.bottomAppBar.replaceMenu(menu.menu_bottom_bar_other)
+            } else {
+                binding.bottomAppBar.navigationIcon = ContextCompat.getDrawable(requireContext(),
+                    drawable.ic_hamburger_menu_bottom_bar)
+
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        drawable.ic_plus_fab
+                    )
+                )
+                binding.bottomAppBar.replaceMenu(menu.menu_bottom_bar)
+            }
+
+        }
+    }*/
+
     private fun BSB (){
         val params = (binding.lifeHack.bottomSheetContainer.layoutParams as CoordinatorLayout.LayoutParams)
         val behavior =  params.behavior as BottomSheetBehavior
@@ -104,12 +169,7 @@ class PictureOfTheDayFragment : Fragment() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when(newState){
 
-                    /*   BottomSheetBehavior.STATE_COLLAPSED -> { TOD() }
-                       BottomSheetBehavior.STATE_DRAGGING -> { TOD() }
-                       BottomSheetBehavior.STATE_EXPANDED -> { TOD() }
-                       BottomSheetBehavior.STATE_HALF_EXPANDED -> { TOD() }
-                       BottomSheetBehavior.STATE_HIDDEN -> { TOD() }
-                       BottomSheetBehavior.STATE_SETTLING -> { TOD() }*/
+
                 }
             }
 
@@ -148,7 +208,7 @@ class PictureOfTheDayFragment : Fragment() {
             is AppState.Error -> {}
             is AppState.Loading -> {
                 BottomSheetBehavior.STATE_HALF_EXPANDED
-               // binding.imageView.load(drawable)
+               // binding.imageView.load(drawable.)
             }
             is AppState.Success -> {
 

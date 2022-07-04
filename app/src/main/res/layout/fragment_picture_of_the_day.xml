@@ -17,9 +17,7 @@
         app:endIconDrawable="@drawable/ic_wikipedia"
         app:endIconMode="custom"
         app:helperText="@string/wiki_helper_text"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -38,9 +36,6 @@
         android:paddingVertical="80dp"
         android:paddingStart="95dp"
         app:chipSpacingHorizontal="-20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/input_layout"
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
@@ -85,7 +80,6 @@
             android:id="@+id/button_green"
             android:layout_width="93dp"
             android:layout_height="70dp"
-            android:backgroundTint="@color/blue"
             android:paddingTop="20dp"
             android:src="@drawable/green" />
 
@@ -93,14 +87,13 @@
             android:id="@+id/button_blu"
             android:layout_width="78dp"
             android:layout_height="70dp"
-            android:backgroundTint="@color/red"
             android:paddingTop="20dp"
             android:src="@drawable/water" />
 
-       <!-- <com.google.android.material.switchmaterial.SwitchMaterial
+        <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_night_mode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>-->
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 
@@ -109,18 +102,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_anchorGravity="center" />
+        app:layout_anchorGravity="center" >
 
-    <com.example.material.utils.EquilateralImageView
-        android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:contentDescription="@string/photo_of_the_day_stub"
-        app:layout_constraintBottom_toBottomOf="@id/chip_group"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_no_photo_vector" />
+        <com.example.material.utils.EquilateralImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="398dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/photo_of_the_day_stub"
+            app:srcCompat="@drawable/ic_no_photo_vector" />
+    </LinearLayout>
 
     <include android:id="@+id/lifeHack"
         layout="@layout/bottom_sheet_layout"/>
