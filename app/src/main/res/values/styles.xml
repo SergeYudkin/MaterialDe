@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
+
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">0.0108571429</item> <!-- расстояние между буквами-->
+    </style>
+
+    <style name="MyShapeAppearanceSmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">100%</item>
+    </style>
+
+
+    <style name="MyBottomAppBarStyle" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="backgroundTint">?superColor</item>
+    </style>
+
+    <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="android:textAppearance">@style/MyTextAppearance</item>
+    </style>
+
+    <!--left-->
+
+    <style name="MyChipStyleStart" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearanceSmallComponentStart</item>
+    </style>
+
+    <style name="MyShapeAppearanceSmallComponentStart" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeBottomRight">0%</item>
+        <item name="cornerSizeTopRight">100%</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+        <item name="cornerSizeTopLeft">50%</item>
+    </style>
+
+
+    <!--middle-->
+
+    <style name="MyChipStyleMiddle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearanceSmallComponentMiddle</item>
+    </style>
+
+    <style name="MyShapeAppearanceSmallComponentMiddle" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeBottomRight">100%</item>
+        <item name="cornerSizeTopRight">0%</item>
+        <item name="cornerSizeBottomLeft">100%</item>
+        <item name="cornerSizeTopLeft">0%</item>
+    </style>
+
+
+    <!--right-->
+    <style name="MyChipStyleEnd" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearanceSmallComponentEnd</item>
+    </style>
+
+
+    <style name="MyShapeAppearanceSmallComponentEnd" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeBottomLeft">0%</item>
+        <item name="cornerSizeTopLeft">100%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+        <item name="cornerSizeTopRight">50%</item>
+    </style>
+
+    <style name="MyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">#0EFF0E</item>
+        <item name="android:insetTop">0dp</item>
+    </style>
+
+    <style name="MyInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#0EFF0E</item>
+    </style>
+
+</resources>

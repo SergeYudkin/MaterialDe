@@ -1,16 +1,49 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Material" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="android:navigationBarColor">?superColor</item>
+        <item name="colorPrimary">?superColor</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimaryContainer">?superColor</item>
+        <item name="colorOnPrimaryContainer">?superColor</item>
+        <item name="colorPrimaryInverse">?superColor</item>
+        <item name="colorSecondary">?superColor</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">?superColor</item>
+        <item name="colorOnSecondaryContainer">?superColor</item>
+        <item name="colorTertiary">?superColor</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorTertiaryContainer">?superColor</item>
+        <item name="colorOnTertiaryContainer">?superColor</item>
+
+        <item name="textAppearanceBody2">@style/MyTextAppearance</item>
+
+        <item name="shapeAppearanceSmallComponent">@style/MyShapeAppearanceSmallComponent</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">?superColor</item>
         <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/MyButtonStyle</item>
+        <item name="textInputStyle">@style/MyInputStyle</item>
+        <item name="bottomAppBarStyle">@style/MyBottomAppBarStyle</item>
+        <!--<item name="chipStyle">@style/MyChipStyle</item>-->
+    </style>
+
+    <style name="MyRedTheme" parent="Theme.Material">
+        <item name="superColor">@color/red</item>
+    </style>
+
+    <style name="MyBlueTheme" parent="Theme.Material">
+        <item name="superColor">@color/blue</item>
+    </style>
+
+    <style name="MyGreenTheme" parent="Theme.Material">
+        <item name="superColor">@color/green</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
     </style>
 </resources>
